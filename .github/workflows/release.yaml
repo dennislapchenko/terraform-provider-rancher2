@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
   build:
@@ -24,19 +24,19 @@ jobs:
         run: |
           make package-rancher
 
-      - name: retrieve GPG Credentials
-        uses: rancher-eio/read-vault-secrets@main
-        with:
-          secrets: |
-            secret/data/github/repo/${{ github.repository }}/signing/gpg passphrase | GPG_PASSPHRASE ;
-            secret/data/github/repo/${{ github.repository }}/signing/gpg privateKeyId | GPG_KEY_ID ;
-            secret/data/github/repo/${{ github.repository }}/signing/gpg privateKey | GPG_KEY
+      # - name: retrieve GPG Credentials
+      #   uses: rancher-eio/read-vault-secrets@main
+      #   with:
+      #     secrets: |
+      #       secret/data/github/repo/${{ github.repository }}/signing/gpg passphrase | GPG_PASSPHRASE ;
+      #       secret/data/github/repo/${{ github.repository }}/signing/gpg privateKeyId | GPG_KEY_ID ;
+      #       secret/data/github/repo/${{ github.repository }}/signing/gpg privateKey | GPG_KEY
 
       - name: sign shasum
         env:
-          GPG_PASSPHRASE: ${{ env.GPG_PASSPHRASE }}
-          GPG_KEY_ID: ${{ env.GPG_KEY_ID }}
-          GPG_KEY: ${{ env.GPG_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          GPG_KEY_ID: ${{ secrets.GPG_KEY_ID }}
+          GPG_KEY: ${{ secrets.GPG_KEY }}
         run: |
           cleanup() {
             # clear history just in case

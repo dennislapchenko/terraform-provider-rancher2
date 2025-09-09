@@ -125,13 +125,11 @@ func machineConfigV2IonoscloudFields() map[string]*schema.Schema {
 		"server_cores": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Default:     2,
 			Description: "Ionos Cloud Server Cores (2, 3, 4, 5, 6, etc.)",
 		},
 		"server_ram": {
 			Type:        schema.TypeInt,
 			Optional:    true,
-			Default:     2048,
 			Description: "Ionos Cloud Server Ram in MB(1024, 2048, 3072, 4096, etc.)",
 		},
 		"disk_size": {

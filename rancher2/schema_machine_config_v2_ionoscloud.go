@@ -187,7 +187,6 @@ func machineConfigV2IonoscloudFields() map[string]*schema.Schema {
 		"datacenter_name": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Default:     "docker-machine-data-center",
 			Description: "Ionos Cloud Virtual Data Center Name",
 		},
 		"lan_id": {
@@ -198,7 +197,6 @@ func machineConfigV2IonoscloudFields() map[string]*schema.Schema {
 		"lan_name": {
 			Type:        schema.TypeString,
 			Optional:    true,
-			Default:     "docker-machine-lan",
 			Description: "Ionos Cloud LAN Name",
 		},
 		"volume_availability_zone": {
